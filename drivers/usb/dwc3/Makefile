@@ -4,7 +4,13 @@ CFLAGS_dwc3-msm.o			:= -Idrivers/usb/host -Idrivers/base/power
 
 obj-$(CONFIG_USB_DWC3)			+= dwc3.o
 
-dwc3-y					:= core.o debug.o trace.o
+dwc3-y					:= core.o
+
+dwc3-$(CONFIG_DEBUG_KERNEL)		+= debug.o
+
+ifneq ($(CONFIG_TRACING),)
+	dwc3-y				+= trace.o
+endif
 
 ifneq ($(filter y,$(CONFIG_USB_DWC3_HOST) $(CONFIG_USB_DWC3_DUAL_ROLE)),)
 	dwc3-y				+= host.o
