@@ -1548,6 +1548,13 @@ config CC_OPTIMIZE_FOR_SIZE
 
 	  If unsure, say N.
 
+config CC_OPTIMIZE_HARDER
+	bool "Optimize harder"
+	help
+	  This option will pass "-O3" to your compiler resulting in a
+	  larger and faster kernel. The more complex optimizations also
+	  increase compilation time and may affect stability.
+
 endchoice
 
 config SYSCTL
