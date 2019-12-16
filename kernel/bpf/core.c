@@ -228,6 +228,18 @@ u64 __weak bpf_jit_alloc_exec_limit(void)
 #endif
 }
 
+#ifndef CONFIG_MODULES
+void * __weak module_alloc(unsigned long size)
+{
+	return vmalloc_exec(size);
+}
+
+void __weak module_memfree(void *module_region)
+{
+	vfree(module_region);
+}
+#endif
+
 static int __init bpf_jit_charge_init(void)
 {
 	/* Only used as heuristic here to derive limit. */
