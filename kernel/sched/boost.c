@@ -171,6 +171,8 @@ void sched_boost_parse_dt(void)
 int sched_set_boost(int type)
 {
 	int ret = 0;
+    
+	return 0;
 
 	mutex_lock(&boost_mutex);
 
