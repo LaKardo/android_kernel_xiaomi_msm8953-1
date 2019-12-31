@@ -753,7 +753,7 @@ ifdef CONFIG_PROFILE_ALL_BRANCHES
 KBUILD_CFLAGS	+= -O2 $(call cc-disable-warning,maybe-uninitialized,)
 else
 ifdef CC_OPTIMIZE_HARDER
-KBUILD_CFLAGS   += -O3 $(call cc-option,-g0,-funsafe-math-optimizations,-ffast-math,-funroll-loops,-mcpu=cortex-a53+crc+crypto,-march=armv8-a+crc+crypto,-mtune=cortex-a53)
+KBUILD_CFLAGS   += -O3 $(call cc-option,-g0,-funsafe-math-optimizations,-ffast-math,-funroll-loops,-mcpu=cortex-a53+crc+crypto,-march=armv8-a+crc+crypto,-mtune=cortex-a53, -ftree-vectorize)
 else
 KBUILD_CFLAGS   += -O2
 endif
